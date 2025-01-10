@@ -14,13 +14,7 @@ spec:
         app: argocd-nodejs
     spec:
       containers:
-      - name: nodejs-app
-        image: node:14
-        command: ["npm", "start"]
-        workingDir: /app
-        volumeMounts:
-        - name: app-volume
-          mountPath: /app
-      volumes:
-      - name: app-volume
-        emptyDir: {}
+      - name: argocd-nodejs
+        image: argocd-nodejs-app:latest
+        ports:
+        - containerPort: 3000
