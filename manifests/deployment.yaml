@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-nodejs
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argocd-nodejs
+  template:
+    metadata:
+      labels:
+        app: argocd-nodejs
+    spec:
+      containers:
+        - name: nodejs-app
+          image: node:16
+          command: ["sh", "-c"]
+          args:
+            - |
+              cd /app &&
+              npm install &&
+              node index.js
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: app-code
+              mountPath: /app
+      volumes:
+        - name: app-code
+          configMap:
+            name: nodejs-config
