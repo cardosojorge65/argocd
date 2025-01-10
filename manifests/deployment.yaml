@@ -16,7 +16,6 @@ spec:
     spec:
       containers:
         - name: argocd-nodejs
-          image: argocd-nodejs-app:latest
-          imagePullPolicy: Never
+          image: cardosojorge65/argocd-nodejs-app:latest
           ports:
             - containerPort: 3000
