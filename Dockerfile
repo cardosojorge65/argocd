@@ -4,8 +4,8 @@ FROM node:16
 WORKDIR /app
 
 # Copie os arquivos necessários para o container
-COPY package.json /app/
-COPY index.js /app/
+COPY app/package.json /app/
+COPY app/index.js /app/
 
 # Instale as dependências do projeto
 RUN npm install
