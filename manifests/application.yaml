@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-nodejs
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/cardosojorge65/argocd'
+    targetRevision: main
+    path: manifests
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
