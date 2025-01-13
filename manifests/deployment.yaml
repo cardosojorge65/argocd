@@ -37,11 +37,11 @@ spec:
                   key: DB_PORT
             - name: DB_USER
               valueFrom:
-                configMapKeyRef:
-                  name: nodejs-config
-                  key: DB_USER
+                secretKeyRef:
+                  name: db-credentials
+                  key: username
             - name: DB_PASSWORD
               valueFrom:
-                configMapKeyRef:
-                  name: nodejs-config
-                  key: DB_PASSWORD
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
