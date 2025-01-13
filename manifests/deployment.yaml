@@ -19,3 +19,29 @@ spec:
           image: cardosojorge65/argocd-nodejs-app:latest
           ports:
             - containerPort: 3000
+          env:
+            - name: APP_ENV
+              valueFrom:
+                configMapKeyRef:
+                  name: nodejs-config
+                  key: APP_ENV
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: nodejs-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: nodejs-config
+                  key: DB_PORT
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: nodejs-config
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: nodejs-config
+                  key: DB_PASSWORD
